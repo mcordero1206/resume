@@ -82,9 +82,9 @@ var education = {
     },
     {
       "name" : "Year Up - Atlanta",
-      "location" : "Atlanta",
+      "location" : "Atlanta, GA",
       "majors" : "Web-Development",
-      "dates" : "September2015 - Present",
+      "dates" : "September 2015 - Present",
       "url" : "http://goo.gl/yS5RCs"
     },
   ],
@@ -100,14 +100,14 @@ var education = {
     var schools = education.schools;
     $("#education").append(HTMLschoolStart);
 
-    var schoolFirst = HTMLschoolName.replace("%data%", schools[0].name);
-    var formattedDates = HTMLschoolDates.replace("%data%", schools[0].dates);
-    var majorFirst = HTMLschoolMajor.replace("%data%", schools[0].majors);
-    var formattedLocation = HTMLschoolLocation.replace("%data%", schools[0].location);
+    var schoolFirst = HTMLschoolName.replace("%data%", schools[1].name);
+    var formattedDates = HTMLschoolDates.replace("%data%", schools[1].dates);
+    var majorFirst = HTMLschoolMajor.replace("%data%", schools[1].majors);
+    var formattedLocation = HTMLschoolLocation.replace("%data%", schools[1].location);
+    var oTitle = HTMLonlineTitle.replace("%data%", onlineCourses.title);
 
-
-    $("#education").append(schoolFirst, formattedDates, majorFirst, formattedLocation, HTMLonlineClasses);
-
+    $(".education-entry").append(schoolFirst, formattedDates, majorFirst, formattedLocation);
+    $(".education-entry:last").append(HTMLonlineClasses);
   }
 
 };
