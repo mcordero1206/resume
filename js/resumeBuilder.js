@@ -68,34 +68,35 @@ var education = {
         "majors": "Web-Development",
         "dates": "September 2015 - Present",
         "url": "http://goo.gl/yS5RCs"
-    } ],
+    }],
     "onlineCourses": [{
-        "title": "Intro to Programming",
-        "school": "Udacity",
+        "title": "Udacity",
+        "school": "Intro to Programming",
         "date": "November 2015 - Present",
         "url": "http://www.udacity.com/"
     }],
 
     "display": function() {
 
-        var schools = education.schools;
-            for (school in education.schools) {
+        for (school in education.schools) {
             $("#education").append(HTMLschoolStart);
-
+            var schools = education.schools; //<----I don't understand why I need this but without it, this object won't append properly
             var schoolFirst = HTMLschoolName.replace("%data%", schools[school].name);
             var formattedDates = HTMLschoolDates.replace("%data%", schools[school].dates);
             var majorFirst = HTMLschoolMajor.replace("%data%", schools[school].majors);
             var formattedLocation = HTMLschoolLocation.replace("%data%", schools[school].location);
+            $(".education-entry:last").append(schoolFirst, formattedDates, majorFirst, formattedLocation);
 
-            $(".education-entry").append(schoolFirst, formattedDates, majorFirst, formattedLocation);
-            $(".education-entry:last").append(HTMLonlineClasses);
-            for (course in education.onlineCourses) {
-                var formattedHTMLonlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
-           
-            }
+        }
+        $(".education-entry:last").append(HTMLonlineClasses);
+        for (course in education.onlineCourses) {
+            var fonlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+            var fonlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+            var fonlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].date);
+            var fonlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+            $(".education-entry:last").append(fonlineTitle, fonlineSchool, fonlineDates, fonlineURL);
         }
     }
-
 };
 //Calls the function
 education.display();
@@ -141,7 +142,7 @@ var projects = {
     "projects": [{
         "title": "Align",
         "dates": "2015",
-        "description": "Website created to promote health and spiritual well being through meditative practices and information thereof.",
+        "description": "A webpage created to promote health and spiritual well being through meditative practices and information thereof.",
         "images": ["images/align.PNG", "images/align2.PNG", "images/align3.PNG"]
     }, ],
     "display": function() {
