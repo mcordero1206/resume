@@ -85,7 +85,8 @@ var education = {
             var formattedDates = HTMLschoolDates.replace("%data%", schools[school].dates);
             var majorFirst = HTMLschoolMajor.replace("%data%", schools[school].majors);
             var formattedLocation = HTMLschoolLocation.replace("%data%", schools[school].location);
-            $(".education-entry:last").append(schoolFirst, formattedDates, majorFirst, formattedLocation);
+            $(".education-entry:last").append(schoolFirst, majorFirst, formattedDates, formattedLocation);
+            
 
         }
         $(".education-entry:last").append(HTMLonlineClasses);
