@@ -41,26 +41,11 @@ var bio = {
       var newformattedPic = formattedbioPic + formattedWelcomeMessage;
       $("#header").append(newformattedPic);
 
-      $("#header").append(HTMLskillsStart);
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);  
-      $("#skills").append(formattedSkill);
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]); 
-      $("#skills").append(formattedSkill);
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-      $("#skills").append(formattedSkill);
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-      $("#skills").append(formattedSkill);
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-      $("#skills").append(formattedSkill);
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[5]);
-      $("#skills").append(formattedSkill);
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[6]);
-      $("#skills").append(formattedSkill);
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[7]);
-      $("#skills").append(formattedSkill);
-
-
-
+$("#header").append(HTMLskillsStart);
+for (index in bio.skills) {
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[index]);
+    $("#skills:last").append(formattedSkill);
+}
   }
    
 };
@@ -104,8 +89,7 @@ var education = {
     var formattedDates = HTMLschoolDates.replace("%data%", schools[1].dates);
     var majorFirst = HTMLschoolMajor.replace("%data%", schools[1].majors);
     var formattedLocation = HTMLschoolLocation.replace("%data%", schools[1].location);
-    var oTitle = HTMLonlineTitle.replace("%data%", onlineCourses.title);
-
+  
     $(".education-entry").append(schoolFirst, formattedDates, majorFirst, formattedLocation);
     $(".education-entry:last").append(HTMLonlineClasses);
   }
