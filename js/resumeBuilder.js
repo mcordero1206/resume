@@ -34,7 +34,7 @@ var bio = {
 
         var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
 
-        var bioPic = "images/mike.JPG";
+        var bioPic = "images/mike.jpg";
         var formattedbioPic = HTMLbioPic.replace("%data%", bioPic);
 
         var newformattedPic = formattedbioPic + formattedWelcomeMessage;
