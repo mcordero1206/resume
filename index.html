@@ -24,7 +24,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 
   <!-- Load the page styles. -->
   <link href="css/style.css" rel="stylesheet">
-
+  <link href="css/hover.css" rel="stylesheet" media="all">
   <!--
   jQuery is a common JavaScript library for reading and making changes to the
   Document Object Model (DOM). The DOM is a tree that contains information
@@ -80,24 +80,23 @@ li a {
     background color: white;
 }
 
-li a:hover {
-    background-color: #D9853B;
+li a {
+    background-color: #74AFAD;
    
 }
 
 .active {
-    background-color: #74AFAD;
     opacity: .5;
 }
 </style>
 </head>
 <body>
-<div id="fixed">
+<div id="fixed" class="active">
 <ul>
-  <li><a class="active" href="#workExperience">Work</a></li>
-  <li><a class="active" href="#projects">Projects</a></li>
-  <li><a class="active" href="#education">Education</a></li>
-  <li><a class="active" href="#mapDiv">Map</a></li>
+  <li><a class="button hvr-bob" href="#workExperience">Work</a></li>
+  <li><a class="button hvr-bob" href="#projects">Projects</a></li>
+  <li><a class="button hvr-bob" href="#education">Education</a></li>
+  <li><a class="button hvr-bob" href="#mapDiv">Map</a></li>
 </ul>
 </div>
     <!-- You'll be deleting this line in the course -->
