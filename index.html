@@ -15,6 +15,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 <scripts> for JavaScript files to build interactions.
 -->
 <head>
+<div id="top"></div>
   <!-- This tells the browser how to read the document. -->
   <meta charset="utf-8">
 
@@ -49,9 +50,56 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
   <meta name="viewport" content="width=device-width">
+<!-- NavBar -->
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+#fixed{
+	position: fixed;
+	top: 0;
+	left: 70%;
+	width: 100%;
+	z-index: 2;
+
+
+}
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background color: white;
+}
+
+li a:hover {
+    background-color: #D9853B;
+   
+}
+
+.active {
+    background-color: #74AFAD;
+    opacity: .5;
+}
+</style>
 </head>
 <body>
-  <div id="main">
+<div id="fixed">
+<ul>
+  <li><a class="active" href="#workExperience">Work</a></li>
+  <li><a class="active" href="#projects">Projects</a></li>
+  <li><a class="active" href="#education">Education</a></li>
+  <li><a class="active" href="#mapDiv">Map</a></li>
+</ul>
+</div>
     <!-- You'll be deleting this line in the course -->
 
     <!--

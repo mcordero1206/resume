@@ -1,50 +1,44 @@
-var role = "Front-End Web Developer";
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-$("#header").prepend(formattedRole);
-
-
-var name = "Michael D. Cordero";
-var formattedName = HTMLheaderName.replace("%data%", name);
-$("#header").prepend(formattedName);
-
-
-
 //Object #1 BIO
 var bio = {
-    "name": "Michael",
-    "role": "Jr. Front-End Web Developer",
+    "name": "Michael D. Cordero",
+    "role": "Front-End Web Developer",
     "contacts": {
         "mobile": "678.504.8890",
         "email": "mcordero1206@gmail.com",
         "github": "github.com/mcordero1206",
-        "location": "Atlanta, GA"
+        "location": "Atlanta, GA",
+        "biopic" : "images/mike.jpg"
     },
-    "welcomeMsg": "Greetings! My name is Michael and I LOVE to create things!",
-    "skills": ["HTML &checkmark;&nbsp;", "CSS &checkmark;&nbsp;", "JS &checkmark;&nbsp; ", "Python &checkmark;&nbsp;", "Photoshop &checkmark;&nbsp;", "Graphic Design &checkmark;&nbsp;", "Excel &checkmark;&nbsp;", "Word &checkmark;&nbsp;"],
+    "welcomeMessage": "Greetings! My name is Michael and I LOVE to create things!",
+    "skills": ["HTML", "CSS", "JS", "Python", "Photoshop", "Graphic Design", "Excel", "Word"],
     "display": function() {
 
+        var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+        var formattedName = HTMLheaderName.replace("%data%", bio.name);
         var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
         var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
         var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
         var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 
-
+        $("#header").prepend(formattedRole);
+        $("#header").prepend(formattedName);
         $("#footerContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedLocation);
         $("#topContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedLocation);
 
-        var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
+        var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
         var bioPic = "images/mike.jpg";
         var formattedbioPic = HTMLbioPic.replace("%data%", bioPic);
 
         var newformattedPic = formattedbioPic + formattedWelcomeMessage;
-        $("#header").append(newformattedPic);
+        $("#header").append(formattedbioPic);
 
         $("#header").append(HTMLskillsStart);
-        for (index in bio.skills) {
-            var formattedSkill = HTMLskills.replace("%data%", bio.skills[index]);
+        for (var index in bio.skills) {
+            var formattedSkill = HTMLskills.replace("%data%", bio.skills[index] + " &checkmark;&nbsp;");
             $("#skills:last").append(formattedSkill);
         }
+        $("#header").append(formattedWelcomeMessage);
     }
 
 };
@@ -57,17 +51,19 @@ bio.display();
 //Object 2 Education
 var education = {
     "schools": [{
-        "name": "CUNY New York City College of Technology",
-        "majors": "Advertising Design",
-        "location": "Brooklyn, NY",
-        "dates": "September 2011 - December 2011",
-        "url": "http://goo.gl/f91wQv"
+        "name" : "CUNY New York City College of Technology",
+        "location" : "Brooklyn, NY",
+        "degree" : "Certificate Program",
+        "majors" : ["Advertising Design"],
+        "dates" : "September 2011 - December 2011",
+        "url" : "http://goo.gl/f91wQv"
     }, {
-        "name": "Year Up - Atlanta",
-        "location": "Atlanta, GA",
-        "majors": "Web-Development",
-        "dates": "September 2015 - Present",
-        "url": "http://goo.gl/yS5RCs"
+        "name" : "Year Up Atlanta",
+        "location" : "Atlanta, GA",
+        "degree" : "Work Force Development",
+        "majors" : ["Web-Development"],
+        "dates" : "September 2015 - Present",
+        "url" : "http://goo.gl/yS5RCs"
     }],
     "onlineCourses": [{
         "title": "Udacity",
@@ -80,22 +76,25 @@ var education = {
 
         for (school in education.schools) {
             $("#education").append(HTMLschoolStart);
-            var schools = education.schools; //<----I don't understand why I need this but without it, this object won't append properly
-            var schoolFirst = HTMLschoolName.replace("%data%", schools[school].name);
-            var formattedDates = HTMLschoolDates.replace("%data%", schools[school].dates);
-            var majorFirst = HTMLschoolMajor.replace("%data%", schools[school].majors);
-            var formattedLocation = HTMLschoolLocation.replace("%data%", schools[school].location);
-            $(".education-entry:last").append(schoolFirst, majorFirst, formattedDates, formattedLocation);
-            
+            var schools = education.schools; //<----I don't understand why I 
+            //need this but without it, this object won't append properly
 
+            var fmtschool = HTMLschoolName.replace("%data%", schools[school].name);
+            var fmtDates = HTMLschoolDates.replace("%data%", schools[school].dates);
+            var fmtmajor = HTMLschoolMajor.replace("%data%", schools[school].majors);
+            var fmtLocation = HTMLschoolLocation.replace("%data%", schools[school].location);
+            var fmtDegree = HTMLschoolDegree.replace("%data%", schools[school].degree);
+            $(".education-entry:last").append(fmtschool + fmtDegree, fmtDates, 
+                fmtLocation, fmtmajor);
         }
+
         $(".education-entry:last").append(HTMLonlineClasses);
         for (course in education.onlineCourses) {
             var fonlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
             var fonlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
             var fonlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].date);
             var fonlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
-            $(".education-entry:last").append(fonlineTitle, fonlineSchool, fonlineDates, fonlineURL);
+            $(".education-entry:last").append(fonlineTitle + fonlineSchool, fonlineDates, fonlineURL);
         }
     }
 };
@@ -112,26 +111,29 @@ var work = {
         "title": "Broadcast Coordinator",
         "location": "Atlanta, GA",
         "dates": "2016 - Present",
-        "description": "Ingesting of digital content into automation servers to broadcast content onto air. Operating Master Control stations. "
+        "description": "Ingesting of digital content into automation servers" +
+        "to broadcast content onto air. Operating Master Control stations. "
     }, {
         "employer": "Home Depot",
         "location": "Kennesaw, GA",
         "title": "Pro Sales Associate",
         "dates": "2014 - 2016",
-        "description": "Handling large contractor orders while offering excellent customer service through thorough knowledge of store products and services."
+        "description": "Handling large contractor orders while offering" + 
+        "excellent customer service through thorough knowledge of store" +
+        "products and services."
     }],
     "display": function() {
 
         $("#workExperience").append(HTMLworkStart);
         for (job in work.jobs) {
 
-            var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-            var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-            var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-            var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-            var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+            var fEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+            var fDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+            var fTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+            var fLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+            var fDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 
-            $("#workExperience").append(formattedEmployer, formattedDates, formattedTitle, formattedLocation, formattedDescription);
+            $("#workExperience").append(fEmployer + fTitle, fDates, fLocation, fDescription);
         }
     }
 };
@@ -143,7 +145,8 @@ var projects = {
     "projects": [{
         "title": "Align",
         "dates": "2015",
-        "description": "A webpage created to promote health and spiritual well being through meditative practices and information thereof.",
+        "description": "A webpage created to promote health and spiritual" + 
+        "well being through meditative practices and information thereof.",
         "images": ["images/align.PNG", "images/align2.PNG", "images/align3.PNG"]
     }, ],
     "display": function() {
