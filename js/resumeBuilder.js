@@ -1,3 +1,5 @@
+'use strict'; //<---Used for debugging my code
+
 //Object #1 BIO
 var bio = {
     "name": "Michael D. Cordero",
@@ -6,9 +8,9 @@ var bio = {
         "mobile": "678.504.8890",
         "email": "mcordero1206@gmail.com",
         "github": "github.com/mcordero1206",
-        "location": "Atlanta, GA",
-        "biopic" : "images/mike.jpg"
+        "location": "Atlanta, GA"
     },
+    "biopic" : "images/mike.jpg",
     "welcomeMessage": "Greetings! My name is Michael and I LOVE to create things!",
     "skills": ["HTML", "CSS", "JS", "Python", "Photoshop", "Graphic Design", "Excel", "Word"],
     "display": function() {
@@ -29,8 +31,6 @@ var bio = {
 
         var bioPic = "images/mike.jpg";
         var formattedbioPic = HTMLbioPic.replace("%data%", bioPic);
-
-        var newformattedPic = formattedbioPic + formattedWelcomeMessage;
         $("#header").append(formattedbioPic);
 
         $("#header").append(HTMLskillsStart);
@@ -74,23 +74,25 @@ var education = {
 
     "display": function() {
 
-        for (school in education.schools) {
+        for (var school in education.schools) {
             $("#education").append(HTMLschoolStart);
             var schools = education.schools; //<----I don't understand why I 
             //need this but without it, this object won't append properly
 
             var fmtschool = HTMLschoolName.replace("%data%", schools[school].name);
+            fmtschool = fmtschool.replace("#", schools[school].url);
             var fmtDates = HTMLschoolDates.replace("%data%", schools[school].dates);
             var fmtmajor = HTMLschoolMajor.replace("%data%", schools[school].majors);
             var fmtLocation = HTMLschoolLocation.replace("%data%", schools[school].location);
             var fmtDegree = HTMLschoolDegree.replace("%data%", schools[school].degree);
-            $(".education-entry:last").append(fmtschool + fmtDegree, fmtDates, 
+            $(".education-entry:last").prepend(fmtschool + fmtDegree, fmtDates, 
                 fmtLocation, fmtmajor);
         }
 
         $(".education-entry:last").append(HTMLonlineClasses);
-        for (course in education.onlineCourses) {
+        for (var course in education.onlineCourses) {
             var fonlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+            fonlineTitle = fonlineTitle.replace("#", education.onlineCourses[course].url);
             var fonlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
             var fonlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].date);
             var fonlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
@@ -125,7 +127,7 @@ var work = {
     "display": function() {
 
         $("#workExperience").append(HTMLworkStart);
-        for (job in work.jobs) {
+        for (var job in work.jobs) {
 
             var fEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
             var fDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
@@ -147,7 +149,8 @@ var projects = {
         "dates": "2015",
         "description": "A webpage created to promote health and spiritual" + 
         "well being through meditative practices and information thereof.",
-        "images": ["images/align.PNG", "images/align2.PNG", "images/align3.PNG"]
+        "images": ["images/align.PNG", "images/align2.PNG", "images/align3.PNG"],
+        "url" : "http://goo.gl/fo17hD"
     }, ],
     "display": function() {
 
@@ -155,9 +158,10 @@ var projects = {
             $("#projects").append(HTMLprojectStart);
 
             var fmtTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+            fmtTitle = fmtTitle.replace("#", projects.projects[i].url);
             var fmtDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
             var fmtDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
-
+            var projectURL = HTMLprojectTitle.replace("#", projects.projects[i].url);
             $(".project-entry:last").append(fmtTitle, fmtDates, fmtDescription);
 
             for (var img in projects.projects[i].images) {
