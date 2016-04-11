@@ -148,7 +148,7 @@ var projects = {
         "title": "Align",
         "dates": "2015",
         "description": "A webpage created to promote health and spiritual" + 
-        "well being through meditative practices and information thereof.",
+        " well being through meditative practices and information thereof.",
         "images": ["images/align.PNG", "images/align2.PNG", "images/align3.PNG"],
         "url" : "http://goo.gl/fo17hD"
     }, ],
