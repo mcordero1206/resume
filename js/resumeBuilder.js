@@ -114,15 +114,15 @@ var work = {
         "location": "Atlanta, GA",
         "dates": "2016 - Present",
         "description": "Ingesting of digital content into automation servers" +
-        "to broadcast content onto air. Operating Master Control stations. "
+        " to broadcast content onto air. Operating Master Control stations. "
     }, {
         "employer": "Home Depot",
         "location": "Kennesaw, GA",
         "title": "Pro Sales Associate",
         "dates": "2014 - 2016",
         "description": "Handling large contractor orders while offering" + 
-        "excellent customer service through thorough knowledge of store" +
-        "products and services."
+        " excellent customer service through thorough knowledge of store" +
+        " products and services."
     }],
     "display": function() {
 
